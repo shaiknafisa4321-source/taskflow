@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | TaskFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+    <main class="auth-card">
+        <a href="{{ url_for('login') }}" class="brand">TaskFlow<span>.</span></a>
+        <h1>Create your account</h1>
+        <p class="muted">A little organization goes a long way.</p>
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="username">Full name</label>
+            <input id="username" type="text" name="username"
+                   maxlength="80" required>
+            <label for="email">Email address</label>
+            <input id="email" type="email" name="email" required>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password"
+                   minlength="8" required>
+            <button class="primary-btn full-width" type="submit">
+                Create account
+            </button>
+        </form>
+        <p class="auth-footer">
+            Already registered?
+            <a href="{{ url_for('login') }}">Log in</a>
+        </p>
+    </main>
+</body>
+</html>

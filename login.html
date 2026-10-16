@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TaskFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+    <main class="auth-card">
+        <a href="{{ url_for('login') }}" class="brand">TaskFlow<span>.</span></a>
+        <h1>Welcome back</h1>
+        <p class="muted">Log in to manage your tasks.</p>
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="email">Email address</label>
+            <input id="email" type="email" name="email" required>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" required>
+            <button class="primary-btn full-width" type="submit">Log in</button>
+        </form>
+        <p class="auth-footer">
+            Don't have an account?
+            <a href="{{ url_for('register') }}">Create one</a>
+        </p>
+    </main>
+</body>
+</html>
